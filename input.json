@@ -1,0 +1,35 @@
+[
+{
+    "Type": "stack",
+    "Tag": 0,
+    "Permissions": "rxR",
+    "Executive": "",
+    "Global": "",
+    "Object Type": "",
+    "Bounds": "",
+    "Address": "0x333333",
+    "Reference": 10 
+},
+{
+    "Type": "stack",
+    "Tag": 1,
+    "Permissions": "rwRW",
+    "Executive": "",
+    "Global": "",
+    "Object Type": "",
+    "Bounds": "",
+    "Address": "0x555555",
+    "Reference": 20
+},
+{
+    "Type": "stack",
+    "Tag": 1,
+    "Permissions": "rwRW",
+    "Executive": "",
+    "Global": "",
+    "Object Type": "",
+    "Bounds": "",
+    "Address": "0x777777",
+    "Reference": 30
+}
+]
