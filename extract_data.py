@@ -34,14 +34,34 @@ def get_caps(db):
         cap["cap_base"] = hex(int(caps_result[4], base=16))
         cap["cap_top"] = hex(int(caps_result[5], base=16))
         caps.append(cap)
-
     return caps
+
+def get_syms(db):
+    get_syms_q = "SELECT * FROM elf_sym"
+    syms_q_results = db_utils.run_sql_query(db, get_syms_q)
+    
+    syms = []
+    for syms_result in syms_q_results:
+        sym = {}
+        sym["region"] = syms_result[0]
+        sym["symbol"] = syms_result[1]
+        sym["type"] = syms_result[4]
+        sym["bind"] = syms_result[5]
+        sym["addr"] = int(syms_result[6], base=16)
+        syms.append(sym)
+    return syms
 
 dbname= "demo.db"
 caps = get_caps(dbname)
-count = 0
-for cap in caps:
-    if cap["cap_loc_path"] == "Stack":
-        count+=1
-        print(json.dumps(cap, indent=2))
-print(count)
+caps_subset = caps[200:210]
+for cap in caps_subset:
+    print(json.dumps(cap, indent=2))
+
+print("How many caps found? ", len(caps))
+
+syms = get_syms(dbname)
+syms_subset = syms[0:10]
+for sym in syms_subset:
+    print(json.dumps(sym, indent=2))
+
+print("How many syms found? ", len(syms))
